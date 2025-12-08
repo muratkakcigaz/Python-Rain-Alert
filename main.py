@@ -6,18 +6,19 @@ import dotenv
 import smtplib
 
 
+dotenv.load_dotenv()
 
 EMAIL=os.getenv('EMAIL')
 EMAIL_APP_PASSWORD=os.getenv('EMAIL_PASSWORD')
-HOST_FORMAT="smtp.live.com"
+HOST_FORMAT="smtp.office365.com"
 #smtp server adress
 #Host Format can change depending on what you use
 #ex for gmail accounts smptp.gmail.com
 
+ENDPOINT="https://api.openweathermap.org/data/2.5/forecast"
 
 
-def configure():
-    dotenv.load_dotenv()
+    
 
 def send_mail(to, subject, body):
     with smtplib.SMTP(host=HOST_FORMAT,port=587,timeout=60) as connection:
@@ -57,8 +58,7 @@ def will_it_rain(data):
 
 
 def main():
-    configure()
-    ENDPOINT="https://api.openweathermap.org/data/2.5/forecast"
+    
     parameters={
         "lat":41.247250,
         "lon":28.995118,
